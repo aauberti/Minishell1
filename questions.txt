@@ -1,0 +1,7 @@
+boucle while dans creating_table ? utile ?
+extract_key (while line[i] != '\0')  ajoute 
+insertion_in_hashmap unsigned long int ??
+new_hashmap_item securisation new_item
+hashmap_in_tab modif de ft_strjoin_var par ft_strjoin_3
+count_word changement const char par char
+handle output append >>> changement des simples tic
