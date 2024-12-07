@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void remove_end_nullify_item(t_hashmap *hashmap, t_hash_item *item, unsigned long int i)
+void remove_and_nullify_item(t_hashmap *hashmap, t_hash_item *item, unsigned long int i)
 {
     free_item_hashmap(item);
     hashmap->items[i] = NULL;
@@ -13,7 +13,7 @@ void replace_with_next_item(t_hashmap *hashmap, t_hash_item *item, unsigned long
     free_item_hashmap(item);
     hashmap->count--;
 }
-void unlink_end_free_next_item(t_hashmap *hashmap, t_hash_item *item, char *key)
+void unlink_and_free_next_item(t_hashmap *hashmap, t_hash_item *item, char *key)
 {
     t_hash_item *temp;
     
@@ -29,4 +29,24 @@ void unlink_end_free_next_item(t_hashmap *hashmap, t_hash_item *item, char *key)
         }
         item = item->next;
     }
+}
+
+int delete_in_hashmap(t_hashmap *hashmap, char *key)
+{
+    unsigned long int i;
+    t_hash_item *current;
+
+    if (!key)
+        return (1);
+    i = djb2_hash(key, hashmap->size);
+    current = hashmap->items[i];
+    if (current == NULL)
+        remove_and_nullify_item(hashmap, current, i);
+    else if (ft_strncmp(current->key, key, ft_strlen(key) + 1) == 0)
+        replace_with_next_item(hashmap, current, i);
+    else
+        unlink_and_free_next_item(hashmap, current, key);
+    if (cmd_in_hashmap(hashmap, key))
+        return (1);
+    return (0);
 }
