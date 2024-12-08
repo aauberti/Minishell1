@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export_shell.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:10:34 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:35 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void extract_key_value(char **var, char **key, char **value, int *count)
@@ -74,18 +86,18 @@ int process_export(t_info *shell, t_commands commands, int *count)
     
     i = 1;
     res = 0;
-    while (commands.commands[i] != NULL)
+    while (commands.command[i] != NULL)
     {
-        if (ft_is_valid_identifier(commands.commands[i], -1, 1) == 0)
+        if (ft_is_valid_identifier(commands.command[i], -1, 1) == 0)
         {
             ft_putstr_fd("minishell: export: ", 2);
-            ft_putstr_fd(commands.commands[i], 2);
+            ft_putstr_fd(commands.command[i], 2);
             ft_putstr_fd(": not a valid identifier\n", 2);
             res = 1;
         }
         else 
         {
-            if (insert_custom_variables(shell, commands.commands, count) == 0)
+            if (insert_custom_variables(shell, commands.command, count) == 0)
                 res = HASH_TABLE_FULL;
         }
         i++;
@@ -98,7 +110,7 @@ void export_shell(t_info *shell, t_commands commands, int end)
     int count[3];
     int res;
 
-    if (commands.commands[1] == NULL)
+    if (commands.command[1] == NULL)
     {
         hashmap_print_table(shell->env, 1);
         manage_exit(shell, NULL, 0, end);

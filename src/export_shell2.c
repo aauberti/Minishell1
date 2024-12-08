@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export_shell2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:10:38 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:39 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int find_char_index(char *str, char c)
@@ -22,7 +34,7 @@ int fetch_hashmap_flag(t_hashmap *hashmap, char * key)
     t_hash_item *item;
 
     i = djb2_hash(key, hashmap->size);
-    item = hashmap->items[i];
+    item = hashmap->item[i];
     while (item != NULL)
     {
         if (ft_strncmp(item->key, key, ft_strlen(key) + 1) == 0)

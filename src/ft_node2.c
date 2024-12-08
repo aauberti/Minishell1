@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_node2.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:10:49 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:50 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void ft_node_error(char **commands[2], int *i, t_info *shell)
@@ -9,7 +21,7 @@ void ft_node_error(char **commands[2], int *i, t_info *shell)
     *i = -2;
 }
 
-char **insert_token(char **commands, char *token, char *index)
+char **insert_token(char **commands, char *token, int index)
 {
     char **new_commands;
     

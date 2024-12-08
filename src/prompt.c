@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:27:03 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:07 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/07 18:50:27 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ char    *prompt(t_info *shell)
     free(prmpt);
     if (!str)
     {
-        printf("exit\n"); // A modifier :!!!!!!!!!!!!!!!
+        printf("exit\n");
         return (NULL);
     }
     if (!str[0])

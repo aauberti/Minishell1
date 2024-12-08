@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   heredoc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:11:04 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:11:05 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char *ft_heredoc_line(char *str[2], size_t size, char *end_heredoc, char *error)
@@ -87,7 +99,7 @@ t_commands *configure_heredoc_input(t_commands *node, char **commands[2], int *i
 
     end_heredoc = NULL;
     (*i)++;
-    if (commads[0][++(*i)] && commands[1][*i][0] != '<' && commands[1][*i][0] != '>'
+    if (commands[0][++(*i)] && commands[1][*i][0] != '<' && commands[1][*i][0] != '>'
         && commands[1][*i][0] != '|')
     {
         end_heredoc = (commands[0][*i]);

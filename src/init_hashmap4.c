@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_hashmap4.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:11:13 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:11:14 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
-
-
 
 t_hash_item *search_in_hashmap(t_hashmap *hashmap, char *key)
 {
@@ -8,7 +18,7 @@ t_hash_item *search_in_hashmap(t_hashmap *hashmap, char *key)
     t_hash_item *item;
 
     i = djb2_hash(key, hashmap->size);
-    item = hashmap->items[i];
+    item = hashmap->item[i];
     while (item != NULL)
     {
         if (ft_strncmp(item->key, key, ft_strlen(key) + 1) == 0)

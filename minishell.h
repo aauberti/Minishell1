@@ -3,26 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:25:41 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/06 10:14:19 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/07 19:04:01 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HASH_STRUCT_H
-# define HASH_STRUCT_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
-# include "libft.h"
- #include <stdio.h>
- #include <unistd.h>
- #include <stdlib.h>
- #include <sys/types.h>
- #include <sys/wait.h>
- #include <stdarg.h>
- #include <readline/history.h>
- #include <readline/readline.h>
- #include <sys/stat.h>
+# include"libft.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <stdarg.h>
+# include <readline/history.h>
+# include <readline/readline.h>
+# include <sys/stat.h>
+# include <signal.h>
+# include <errno.h>
+# include <sys/ioctl.h>
+# include <dirent.h>
+
+ 
+ 
 
 extern int shell_signal;
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_shell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:10:19 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:20 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void detect_and_execute_command(t_info *shell, t_commands *commands)
@@ -6,19 +18,19 @@ void detect_and_execute_command(t_info *shell, t_commands *commands)
     char *str;
 
     index = 1;
-    while (commands->commands[index] != NULL)
+    while (commands->command[index] != NULL)
     {
-        if (ft_is_valid_env_var_format(commands->commands[index]) == 1)
+        if (ft_is_valid_env_var_format(commands->command[index]) == 1)
         {
             index++;
             continue;
         }
-        str = ft_path(shell, commands->commands[index]);
+        str = ft_path(shell, commands->command[index]);
         if (str == NULL)
             return;
-        free(commands->commands[0]);
-        commands->commands[0] = NULL;
-        commands->commands = commands->commands + 1;
+        free(commands->command[0]);
+        commands->command[0] = NULL;
+        commands->command = commands->command + 1;
         ft_run_command(shell, commands);
         index++;
     }
@@ -67,12 +79,12 @@ void env_shell(t_info *shell, t_commands commands, int end)
     if (!temp)
         return;
     detect_and_execute_command(shell, &commands);
-    while (commands.commands[i] != NULL)
+    while (commands.command[index] != NULL)
     {
-        if (ft_is_valid_env_var_format(commands.commands[i]) == 0 ||
-            ft_add_or_update_env(temp, commands.commands[i]) == 1)
+        if (ft_is_valid_env_var_format(commands.command[index]) == 0 
+            || ft_add_or_update_env(temp, commands.command[index]) == 1)
         {
-            handle_env_exit(shell, commands.commands[i], temp, end);
+            handle_env_exit(shell, commands.command[index], temp, end);
             return;
         }
         index++;

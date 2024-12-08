@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cd_shell.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:10:09 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:10 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int handle_special_cd_args(t_info *shell, char **str, char *arg, int end)
@@ -32,12 +44,12 @@ int validate_curr_dir(t_info *shell, char **current, char *pwd, int end)
         manage_exit(shell, pwd, NOT_A_DIRECTORY, end);
         return (CD_ERROR);
     }
-    if (chdir(pwd) == 0)
+    if (chdir(pwd) != 0)
     {
         manage_exit(shell, pwd, CD_ERROR, end);
         return (CD_ERROR);
     }
-    *current = getcwd(NULL, PATH_MAX);
+    *current = getcwd(NULL, 0);
     if (*current == NULL)
     {
         manage_exit(shell, "cd: getcwd failed", CD_ERROR, end);
@@ -73,13 +85,13 @@ void cd_shell(t_info *shell, t_commands commands, int end)
 {
     char *str;
 
-    if (commands.commands[1] && commands.commands[2] != NULL)
+    if (commands.command[1] && commands.command[2] != NULL)
     {
         manage_exit(shell, "cd: too many arguments", CD_ERROR, end);
         return;
     }
-    str = commands.commands[1];
-    if (handle_special_cd_args(shell, &str, commands.commands[1], end) == CD_ERROR)
+    str = commands.command[1];
+    if (handle_special_cd_args(shell, &str, commands.command[1], end) == CD_ERROR)
         return;
     if (update_directory(shell, str, end) == CD_ERROR)
         return;

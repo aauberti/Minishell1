@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/07 19:09:59 by aaubertin         #+#    #+#             */
+/*   Updated: 2024/12/07 19:10:00 by aaubertin        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void exit_shell(t_info *shell, t_commands commands)
@@ -5,18 +17,18 @@ void exit_shell(t_info *shell, t_commands commands)
     int i;
 
     i = 1;
-    if (commands.commands[1] != NULL && ft_isdigit(ft_atoi(commands.commands[1])) == 0)
+    if (commands.command[1] != NULL && ft_isdigit(ft_atoi(commands.command[1])) == 0)
     {
         manage_exit(shell, NULL, 0, 0);
-        exit ((unsigned char)ft_atoi(commands.commands[1]));
+        exit ((unsigned char)ft_atoi(commands.command[1]));
     }
-    else if (commands.commands[1] != NULL)
+    else if (commands.command[1] != NULL)
     {
         ft_putstr_fd("exit\n", 2);
         ft_putstr_fd("minishell: exit: ", 2);
-        while (commands.commands[i] != NULL)
+        while (commands.command[i] != NULL)
         {
-            ft_putstr_fd(commands.commands[1], 2);
+            ft_putstr_fd(commands.command[1], 2);
             ft_putstr_fd(" ", 2);
             i++;
         }
@@ -71,21 +83,21 @@ void history_shell(t_info *shell, t_commands commands, int end)
 
     size = ft_tab_len(shell->history);
     i = 0;
-    if (commands.commands[1] == NULL)
+    if (commands.command[1] == NULL)
         ft_printf_history(shell, i);
-    else if (!ft_isnumeric(commands.commands[1]))
+    else if (!ft_isnumeric(commands.command[1]))
     {
-        manage_exit(shell, commands.commands[1], HISTORY_BAD_ARG, end);
+        manage_exit(shell, commands.command[1], HISTORY_BAD_ARG, end);
         return ;
     }
-    else if (commands.commands[1] && !commands.commands[2])
+    else if (commands.command[1] && !commands.command[2])
     {
-        i = size - ft_atoi(commands.commands[1]);
+        i = size - ft_atoi(commands.command[1]);
         if (i < 0)
             i = 0;
         ft_printf_history(shell, i);
     }
-    else if (commands.commands[1] && commands.commands[2])
+    else if (commands.command[1] && commands.command[2])
     {
         manage_exit(shell, NULL, HISTORY_BAD_ARGS, end);
         return ;

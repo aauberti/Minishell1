@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_exit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:09:32 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 11:00:38 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:49:44 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void ft_free_hashmap(t_hashmap *hashmap)
     index = 0;
     while (index < hashmap->size)
     {
-        item = hashmap->items[index];
+        item = hashmap->item[index];
         while (item != NULL)
         {
             temp = item->next;
@@ -59,7 +59,7 @@ void ft_free_hashmap(t_hashmap *hashmap)
         }
         index++;
     }
-    free(hashmap->items);
+    free(hashmap->item);
     free(hashmap);
 }
 
@@ -68,7 +68,7 @@ void ft_exit_all(t_info *shell)
     if (shell)
     {
         if (shell->env)
-            ft_free_hashmap(t_hashmap *hashmap);
+            ft_free_hashmap(shell->env);
         if (shell->commands)
             ft_lstclear(&shell->commands, free_command);
         if (shell->pids)

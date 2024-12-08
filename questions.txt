@@ -6,3 +6,4 @@ hashmap_in_tab modif de ft_strjoin_var par ft_strjoin_3
 count_word changement const char par char
 handle output append >>> changement des simples tic
 CHANGER NOM hashmap_print_tabl
+dasn cd_shell.c fonction validte_curr_dir *current = getcwd(NULL, 0); remplace PATH_MAX par 0;
