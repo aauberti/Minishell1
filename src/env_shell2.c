@@ -3,14 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   env_shell2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:23 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:24 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 10:56:13 by ebervas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+ int ft_is_valid_env_var_format(char *str)
+ {
+    size_t index;
+
+    index = 0;
+    while (str[index] != '\0')
+    {
+        if (str[index] == '=')
+            return (1);
+        index++;
+    }
+    return (0);
+ }
+
+ void handle_env_exit(t_info *shell, char *commands, t_hashmap *cpy_env, int end)
+ {
+    free_hashmap(cpy_env);
+    manage_exit(shell, commands, FILE_NOT_FOUND, end);
+ }
+
+void close_file_descriptors(t_info *shell, t_commands *commands)
+{
+    t_commands *temp;
+    t_list *current;
+
+    current = shell->command;
+    while (current != NULL)
+    {
+        temp = current->content;
+        if (temp == commands)
+        {
+            current = current->next;
+            continue;
+        }
+        if (temp->fd1 != 0)
+            close(temp->fd1);
+        if (temp->fd2 != 1)
+            close(temp->fd2);
+        current = current->next;
+    }
+}
 
 char *ft_path(t_info *shell, char *commands)
 {
