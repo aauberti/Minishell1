@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:34:38 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 11:59:43 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void configure_pipe(t_info *shell, int fd[2], int *count)
     t_commands *next_command;
     t_list *current;
 
-    current = shell->command;
+    current = shell->commands;
     while (current)
     {
         (*count)++;
@@ -34,8 +34,8 @@ void configure_pipe(t_info *shell, int fd[2], int *count)
 
 void free_execute_data(t_info *shell)
 {
-    if (shell->command)
-        ft_lstclear(&shell->command, free_command);
+    if (shell->commands)
+        ft_lstclear(&shell->commands, free_command);
     if (shell->pids)
     {
         free(shell->pids);
@@ -92,10 +92,10 @@ void ft_execute_commands(t_info *shell)
     t_commands *current_cmds;
 
     cmd_count = 0;
-    if (!shell->command)
+    if (!shell->commands)
         return ;
-    current_cmds = shell->command->content;
-    if (shell->command->next == NULL && current_cmds->command != NULL && 
+    current_cmds = shell->commands->content;
+    if (shell->commands->next == NULL && current_cmds->command != NULL && 
         ft_is_builtin_commands(current_cmds->command[0]) == 0 &&
         ft_strncmp("env", current_cmds->command[0], 3) != 0)
     {

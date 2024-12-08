@@ -62,7 +62,7 @@ void run_command_in_pipeline(t_info *shell, int count)
     int index;
     t_list *current;
 
-    current = shell->command;
+    current = shell->commands;
     index = 0;
     while (current && index < count)
     {

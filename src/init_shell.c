@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:46 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:11 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:04:24 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ t_info  *valid_env(t_info *shell, char **argv)
     return (shell);
 }
 
+void create_and_store_pid(t_info *shell)
+{
+    pid_t   pid;
+
+    pid = fork();
+    if (pid < 0)
+        manage_exit(shell, NULL, FORK_ERROR, 1);
+    if (pid == 0)
+        manage_exit(shell, NULL, 1, 1);
+    waitpid(pid, NULL, 0);
+    shell->pid = pid - 1;
+}
 void    init_shell(t_info   *shell, char **argv, char **envp)
 {
     shell->env = init_hashmap(envp);
@@ -48,5 +60,5 @@ void    init_shell(t_info   *shell, char **argv, char **envp)
     shell->uid = 0;
     shell->exit_status = 0;
     valid_env(shell, argv);
-    //gestion pid
+    create_and_store_pid(shell);
 }

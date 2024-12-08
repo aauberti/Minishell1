@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_shell2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:23 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 10:56:13 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 11:59:16 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void close_file_descriptors(t_info *shell, t_commands *commands)
     t_commands *temp;
     t_list *current;
 
-    current = shell->command;
+    current = shell->commands;
     while (current != NULL)
     {
         temp = current->content;

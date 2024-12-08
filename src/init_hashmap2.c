@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:39 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:12 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:06:16 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int new_item_in_hashmap(int i, t_hashmap *table, t_hash_item *new_item)
 {
     if (table->count == table->size)
     {
-        //gestion exit (handle_exit)
+        manage_exit(NULL, NULL, HASH_TABLE_FULL, 0);
         free_item_hashmap(new_item);
         return (0);
     }

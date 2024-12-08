@@ -6,13 +6,13 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:09:59 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:00 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:07:24 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void exit_shell(t_info *shell, t_commands commands)
+void    exit_shell(t_info *shell, t_commands commands)
 {
     int i;
 

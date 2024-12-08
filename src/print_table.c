@@ -6,13 +6,13 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:56 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 18:50:13 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:21:58 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	print_env(t_hash_item *env, int options)
+void	print_env(t_hash_item *env, int options)
 {
 	ft_putendl_fd("----------------------------", 1);
 	ft_putstr_fd("| ", 1);

@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:15 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:18 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:14:24 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void    update_tab(char **tab, int index, int tab_len)
             i++;
     }
 }
+
 char    *hanle_variable_home(char   *token, int index, int state[2], char *home)
 {
     char    *loc;
