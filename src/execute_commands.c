@@ -3,14 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   execute_commands.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:28 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 11:34:38 by ebervas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void configure_pipe(t_info *shell, int fd[2], int *count)
+{
+    t_commands *command;
+    t_commands *next_command;
+    t_list *current;
+
+    current = shell->command;
+    while (current)
+    {
+        (*count)++;
+        command = current->content;
+        if (current->next != NULL)
+        {
+            next_command = current->next->content;
+            setup_pipe_between_commands(command, next_command, fd);
+        }
+        current = current->next;
+    }
+}
+
+void free_execute_data(t_info *shell)
+{
+    if (shell->command)
+        ft_lstclear(&shell->command, free_command);
+    if (shell->pids)
+    {
+        free(shell->pids);
+        shell->pids = NULL;
+    }
+}
 
 int ft_is_builtin_commands(const char *command)
 {
@@ -61,13 +92,22 @@ void ft_execute_commands(t_info *shell)
     t_commands *current_cmds;
 
     cmd_count = 0;
-    if (!shell->commands)
+    if (!shell->command)
         return ;
-    current_cmds = shell->commands->content;
-    if (shell->commands->next == NULL && current_cmds->command != NULL && ft_is_builtin_commands(current_cmds->command[0]) == 0 &&
+    current_cmds = shell->command->content;
+    if (shell->command->next == NULL && current_cmds->command != NULL && 
+        ft_is_builtin_commands(current_cmds->command[0]) == 0 &&
         ft_strncmp("env", current_cmds->command[0], 3) != 0)
     {
         handle_builtin_commands(shell, *current_cmds, 0);
-
+        free_execute_data(shell);
+        return ;
     }
+    configure_pipe(shell, pipe_fd, &cmd_count);
+    shell->pids = malloc(sizeof(int) * cmd_count);
+    if (shell->pids == NULL)
+        manage_exit(shell, "exec", 1, 0);
+    run_command_in_pipeline(shell, cmd_count);
+    wait_for_processes(shell, cmd_count);
+    free_execute_data(shell);
 }
