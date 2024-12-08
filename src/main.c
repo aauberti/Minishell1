@@ -6,7 +6,7 @@
 /*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:53 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 16:31:01 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 11:57:05 by ebervas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,22 @@ int main(int argc, char **argv, char **envp)
 {
     char    *str;
     t_info  shell;
+    
     if (argc != 1)
-    {
-        printf("Error: Too many arguments\n");
-        return (1);
-    }
-    if(argv[1] != NULL)
-    {
-        printf("Error: Arguments not supported\n");
-        return (1);
-    }   
-    if (!envp || !envp[0])
-    {
-        printf("Error: No environment variables provided\n");
-        return (1);
-    }
-    t_hashmap *table = init_hashmap(envp);
-    if (!table)
-    {
-        printf("Error: Failed to initialize hashmap\n");
-        return (1);
-    }
-    hashmap_print_table(table, 0);
+        manage_exit(NULL, argv[1], INVALID_ARGS, 1);
     init_shell(&shell, argv, envp);
     while (1)
     {
+        shell_signal = 0;
+        setup_input_signals_handler();
         str = prompt(&shell);
         if (!str)
             break;
         input_manager(&shell, str);
-         ft_execute_commands(&shell);
+        ft_execute_commands(&shell);
+        if (shell_signal == SIGINT)
+            shell.exit_status = 128 + shell_signal;
     }
+    manage_exit(&shell, NULL, 0, 1);
+    return (0);
 }
