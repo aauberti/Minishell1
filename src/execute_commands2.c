@@ -1,5 +1,33 @@
 #include "minishell.h"
 
+void redirect_io_for_command(t_commands *command)
+{
+    if (command->fd2 != 1)
+        dup2(command->fd2, 1);
+    if (command->fd1 != 0)
+        dup2(command->fd1, 0);
+}
+
+void create_child_process(t_info *shell, t_commands *command, int *pids, int count)
+{
+    pids[count] = fork();
+    setup_execution_signals_handler();
+    if (pids[count] == -1)
+        manage_exit(shell, NULL, FORK_ERROR, 0);
+    if (pids[count] == 0)
+    {
+        redirect_io_for_command(command);
+        ft_run_command(shell, command);
+    }
+    else
+    {
+        if (command->fd2 != 1)
+            close(command->fd2);
+        if (command->fd1 != 0)
+            close(command->fd1);
+    }
+}
+
 void wait_for_processes(t_info *shell, int count)
 {
     int index;
