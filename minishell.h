@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:25:41 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:23:38 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:35:21 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int handle_builtin_commands(t_info *shell, t_commands commands, int end);
  char    *handle_variable_expand(t_info *shell, char *token, int state[2], int index);
  void    ft_expand(t_info *shell, char **tokenize);
  void    update_tab(char **tab, int index, int tab_len);
- char    *hanle_variable_home(char   *token, int index, int state[2], char *home);
+ char    *handle_variable_home(char   *token, int index, int state[2], char *home);
  void ft_fd_utils(char *path, int state[2], t_info *shell);
  int ft_fd(int fd, char *path, int state[2], t_info *shell);
  t_commands *handle_output(t_commands *node, char **commands[2], int *i, t_info *shell);
@@ -187,8 +187,8 @@ void remove_env_var(t_info *shell, char *key);
 t_info  *valid_env(t_info *shell, char **argv);
 void create_and_store_pid(t_info *shell);
 void    init_shell(t_info   *shell, char **argv, char **envp);
-char    *ft_create_token(char *str);
-void    input_manager(t_info *shell, char *str);
+char    **ft_create_token(char *str);
+void    *input_manager(t_info *shell, char *str);
 void ft_close(t_info *shell, t_commands *command);
 void ft_free_item(t_hash_item *item);
 void ft_free_hashmap(t_hashmap *hashmap);

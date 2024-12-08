@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_shell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:19 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:06:47 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 12:51:19 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ t_hashmap *duplicate_env_hashmap(t_hashmap *hashmap)
 {
     char **tab;
     t_hashmap *new;
-
-    hashmap_to_tab(&tab, hashmap, 0, 0);
+    
+    hashmap_in_tab(hashmap, &tab,  0, 0);
     new = init_hashmap(tab);
-    ft_free_tab(&tab);
+    ft_freetab(&tab);
     return (new);
 }
 

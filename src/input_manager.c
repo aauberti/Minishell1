@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:49 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/05 10:46:16 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 12:30:58 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char    *ft_create_token(char *str)
+char    **ft_create_token(char *str)
 {
     int     i;
     char    **tokens;
@@ -31,7 +31,7 @@ char    *ft_create_token(char *str)
     return (tokens);
 }
 
-void    input_manager(t_info *shell, char *str)
+void    *input_manager(t_info *shell, char *str)
 {
     char    **tokenize;
 
@@ -43,6 +43,6 @@ void    input_manager(t_info *shell, char *str)
         return ("");
     }
     ft_expand(shell, tokenize);
-    shell->commands = ft_update_list(shell, tokenize, -1);
+    shell->commands = ft_list_update(shell, tokenize, -1);
     return (shell);
 }

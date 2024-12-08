@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:22 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:16 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:31:40 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char    **create_word(char **word, char *str, char *sep, int index[3])
     size = ft_strlen(str);
     while (str[index[0]])
     {
-        while (ft_strchr(sep, str[index[0]]) && str[str[index[0]]] != '\0')
+        while (ft_strchr(sep, str[index[0]]) && str[index[0]] != '\0')
             index[0]++;
         index[1] = index [0];
         while ((!ft_strchr(sep, str[index[0]]) || quote_state[0] || quote_state[1]) && str[index[0]])

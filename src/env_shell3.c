@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 11:59:25 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:59:26 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:52:21 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int ft_add_or_update_env(t_hashmap *env, char *str)
         if (delete_in_hashmap(env, key) == 1)
             return (1);
     }
-    if (insertion_in_hashmap(key, value, env, 0) == NULL)
+    if (insertion_in_hashmap(env, key, value, 0) == NULL)
         return (1);
     free(key);
     free(value);

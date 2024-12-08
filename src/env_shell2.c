@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:23 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:59:16 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:51:38 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char *ft_path(t_info *shell, char *commands)
     char *full_path;
 
     index = 0;
-    directory = cmd_in_hashmap(shell->env, "PATH");
+    directory = cmds_in_hashmap(shell->env, "PATH");
     if (directory == NULL)
         return (NULL);
     path_directories = ft_split(directory + 5, ':');
@@ -79,7 +79,7 @@ char *ft_path(t_info *shell, char *commands)
         full_path = NULL;
         index++;
     }
-    ft_free_tab(&path_directories);
+    ft_freetab(&path_directories);
     return (full_path);
 }
 
@@ -93,7 +93,7 @@ void ft_run_command(t_info *shell, t_commands *commands)
     commands->path = NULL;
     if (commands->command[0][0] != '/')
         commands->path = ft_path(shell, commands->command[0]);
-    hashmap_to_tab(shell->env, &temp, 0, 0);
+    hashmap_in_tab(shell->env, &temp, 0, 0);
     if (commands->path == NULL)
         commands->path = ft_strdup(commands->command[0]);
     close_file_descriptors(shell, NULL);

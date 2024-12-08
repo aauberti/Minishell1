@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:09:32 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 18:49:44 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:59:21 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void ft_close(t_info *shell, t_commands *command)
     while (current != NULL)
     {
         node = current->content;
-        if (node->command)
+        if (node == command)
         {
             current = current->next;
             continue;
@@ -85,7 +85,7 @@ void    manage_exit(t_info *shell, char *arguments, int error, int end)
         shell->exit_status = 2;
     else if (error == COMMAND_NOT_FOUND)
         shell->exit_status = 127;
-    else if (error = IS_A_DIRECTORY)
+    else if (error == IS_A_DIRECTORY)
         shell->exit_status = 126;
     else
         shell->exit_status = error;

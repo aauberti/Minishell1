@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:50:52 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 10:41:39 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:56:00 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int ft_fd(int fd, char *path, int state[2], t_info *shell)
         new_fd = open(path, O_RDONLY);
     else
         new_fd = fd;
-    return (fd);
+    return (new_fd);
 }
 
 t_commands *handle_output(t_commands *node, char **commands[2], int *i, t_info *shell)

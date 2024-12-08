@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:09:59 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:07:24 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:39:18 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void pwd_shell(t_info *shell, t_commands commands, int end)
 {
     char *pwd;
 
-    pwd = cmd_in_hashmap(shell->env, "PWD");
+    pwd = cmds_in_hashmap(shell->env, "PWD");
     if (pwd == NULL)
     {
         manage_exit(shell, NULL, 1, end);

@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:09 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:10 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:46:19 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int handle_special_cd_args(t_info *shell, char **str, char *arg, int end)
 {
     if (*str == NULL)
     {
-        *str = cmd_in_hashmap(shell->env, "HOME");
+        *str = cmds_in_hashmap(shell->env, "HOME");
         if (*str == NULL)
         {
             manage_exit(shell, "cd: HOME not set", CD_ERROR, end);
@@ -25,7 +25,7 @@ int handle_special_cd_args(t_info *shell, char **str, char *arg, int end)
     }
     else if (ft_strncmp(arg, "-", 1) == 0)
     {
-        *str = cmd_in_hashmap(shell->env, "OLDPWD");
+        *str = cmds_in_hashmap(shell->env, "OLDPWD");
         if (*str == NULL)
         {
             manage_exit(shell, "cd: OLDPWD not set", CD_ERROR, end);
@@ -33,6 +33,7 @@ int handle_special_cd_args(t_info *shell, char **str, char *arg, int end)
         }
         return (0);
     }
+    return (0);
 }
 
 int validate_curr_dir(t_info *shell, char **current, char *pwd, int end)
@@ -65,11 +66,11 @@ int update_directory(t_info *shell, char *str, int end)
 
     if (validate_curr_dir(shell, &current, str, end) == CD_ERROR)
         return (CD_ERROR);
-    old_pwd = ft_strdup(cmd_in_hashmap(shell->env, "PWD"));
+    old_pwd = ft_strdup(cmds_in_hashmap(shell->env, "PWD"));
     remove_env_var(shell, "PWD");
     remove_env_var(shell, "OLDPWD");
-    if (insert_in_hashmap(shell->env, "PWD", current, 0) == NULL ||
-        insert_in_hashmap(shell->env, "OLDPWD", old_pwd, 0) == NULL)
+    if (insertion_in_hashmap(shell->env, "PWD", current, 0) == NULL ||
+        insertion_in_hashmap(shell->env, "OLDPWD", old_pwd, 0) == NULL)
     {
         free (current);
         free (old_pwd);

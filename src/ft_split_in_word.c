@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:19 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:17 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:32:00 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char    **ft_split_in_word(const char *str, char *sep)
     size = count_in_word((char *)str, sep, 0);
     if (size == -1)
         return (NULL);
-    word == malloc((size + 1) * sizeof(char *));
+    word = malloc((size + 1) * sizeof(char *));
     if (!word)
         return (NULL);
     word = ft_create_in_word(word, (char *)str, sep, i);

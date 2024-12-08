@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:12 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 09:27:19 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:34:02 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char    *ft_in_var2(char *token, int index, t_info *shell, char *temp)
         var = ft_itoa(shell->uid);
     else
         var = ft_strdup(cmds_in_hashmap(shell->env, temp));
-    if (!var && (token[index] == '\'') || token[index] == '\"')
+    if ((!var && (token[index] == '\'')) || token[index] == '\"')
         var = ft_strdup(temp);
     else if (!var && ft_in_charset(&token[index], "!@#%^&|\"\'$?<> ") == -1 && index > 0 && ft_strchr("=", token[index - 1]))
         var = NULL;
@@ -55,7 +55,7 @@ char    *ft_in_var(char *token, int index, t_info *shell)
     int     state;
 
     state = ft_in_charset(&token[index], "=!@#%^&|\"\'$?<> ") + (ft_strchr("$?", token[index]) != 0);
-    if (!state&& (token[index] == '\'') || token[index] == '\"')
+    if ((!state && (token[index] == '\'')) || token[index] == '\"')
         state += ft_in_charset(&token[index + 1], "\'\"") + 1;
     if (state == -1)
         state = ft_strlen(token) - 1;

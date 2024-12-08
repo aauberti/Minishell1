@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:59:43 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:53:10 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int ft_is_builtin_commands(const char *command)
 int handle_builtin_commands(t_info *shell, t_commands commands, int end)
 {
     if (ft_strncmp("exit", commands.command[0], 4) == 0)
-        exit_shell(shell, commands, end);
+        exit_shell(shell, commands);
     if (ft_strncmp("pwd", commands.command[0], 3) == 0)
         pwd_shell(shell, commands, end);
     if (ft_strncmp("history", commands.command[0], 8) == 0)

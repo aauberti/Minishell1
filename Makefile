@@ -18,7 +18,6 @@ SRC = $(SRCDIR)/init_hashmap.c \
 	  $(SRCDIR)/ft_split_in_word.c \
 	  $(SRCDIR)/ft_expand.c\
 	  $(SRCDIR)/ft_expand2.c\
-	  $(SRCDIR)/ft_list_update.c\
 	  $(SRCDIR)/builtin.c\
 	  $(SRCDIR)/builtin1.c\
 	  $(SRCDIR)/cd_shell.c\
@@ -30,8 +29,6 @@ SRC = $(SRCDIR)/init_hashmap.c \
 	  $(SRCDIR)/execute_commands2.c\
 	  $(SRCDIR)/export_shell.c\
 	  $(SRCDIR)/export_shell2.c\
-	  $(SRCDIR)/ft_expand.c\
-	  $(SRCDIR)/ft_expand2.c\
 	  $(SRCDIR)/ft_node.c\
 	  $(SRCDIR)/ft_node2.c\
 	  $(SRCDIR)/ft_print_error.c\
@@ -39,8 +36,7 @@ SRC = $(SRCDIR)/init_hashmap.c \
 	  $(SRCDIR)/ft_update_list2.c\
 	  $(SRCDIR)/heredoc.c\
 	  $(SRCDIR)/manage_exit.c\
-	  $(SRCDIR)/manage_signals.c\
-	  $(SRCDIR)/print_table.c\
+	  $(SRCDIR)/manage_signal.c\
 	  $(SRCDIR)/unset.c\
 
 

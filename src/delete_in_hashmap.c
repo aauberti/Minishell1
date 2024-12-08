@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:15 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:16 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:39:31 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int delete_in_hashmap(t_hashmap *hashmap, char *key)
         replace_with_next_item(hashmap, current, i);
     else
         unlink_and_free_next_item(hashmap, current, key);
-    if (cmd_in_hashmap(hashmap, key))
+    if (cmds_in_hashmap(hashmap, key))
         return (1);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:34 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:10:35 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 12:55:18 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int insert_custom_variables(t_info *shell, char **var, int *count)
         }
         flag = fetch_hashmap_flag(shell->env, key);
         remove_env_var(shell, key);
-        count[2] = (cmd_in_hashmap(key, value, shell->env, flag) != NULL);
+        count[2] = (insertion_in_hashmap(shell->env, key, value, flag) != NULL);
         free(key);
         free(value);
         count[0]++;
