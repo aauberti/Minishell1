@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/04 10:32:47 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 15:45:45 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char    **ft_tabcpy(char **tokenize)
     int     len;
     int     index;
 
-    if (!tokenize || tokenize[0])
+    if (!tokenize || !tokenize[0])
         return (NULL);
     len = ft_tab_len(tokenize);
     new = malloc((len + 1) * sizeof(char *));
@@ -117,7 +117,7 @@ t_list  *ft_list_update(t_info *shell, char **tokenize, int index)
     while (tokenize[++index])
     {
         commands[1] = ft_lstlast(commands[0]);
-        if (index == 0 || (tokenize[index][0] == '|' && tokenize[index + 1] && tokenize[index +1][0]))
+        if (index == 0 || (tokenize[index][0] == '|' && tokenize[index + 1] && tokenize[index + 1][0]))
         {
             index += tokenize[index][0] == '|';
             ft_lstadd_back(&commands[0], ft_lstnew(ft_create_node()));

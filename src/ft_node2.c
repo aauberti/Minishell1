@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:49 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:57:39 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 14:38:21 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void ft_node_error(char **commands[2], int *i, t_info *shell)
         manage_exit(shell, "'|'", SYNTAX_ERROR, 0);
     *i = -2;
 }
+
 
 char **insert_token(char **commands, char *token, int index)
 {

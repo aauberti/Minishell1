@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebervas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:53 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 11:57:05 by ebervas          ###   ########.fr       */
+/*   Updated: 2024/12/08 15:12:24 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,12 @@ int main(int argc, char **argv, char **envp)
     }
     manage_exit(&shell, NULL, 0, 1);
     return (0);
+}
+
+void ft_print_tab(char **tab)
+{
+    int i=0;
+
+    while (tab[i])
+        printf("%s\n",tab[i++]);
 }

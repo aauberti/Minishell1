@@ -45,7 +45,7 @@ SRC = $(SRCDIR)/init_hashmap.c \
 OBJ = $(SRC:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I. -I$(LIBFTDIR)
+CFLAGS = -Wall -Wextra -Werror -g -I. -I$(LIBFTDIR)
 
 all: $(NAME)
 
