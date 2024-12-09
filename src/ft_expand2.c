@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:15 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:36:09 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 13:57:40 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ char    *handle_variable_home(char   *token, int index, int state[2], char *home
     char    *temp;
 
     state[0] = 0;
-    state[1] = 0;
-
     while(token && token[++index])
     {
         state[0] = (state[0] + (!state[1] && token[index] == '\'')) % 2;

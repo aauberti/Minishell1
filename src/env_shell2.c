@@ -6,14 +6,14 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:23 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 23:31:10 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 13:15:01 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
- int ft_is_valid_env_var_format(char *str)
- {
+int ft_is_valid_env_var_format(char *str)
+{
     size_t index;
 
     index = 0;
@@ -24,13 +24,13 @@
         index++;
     }
     return (0);
- }
+}
 
- void handle_env_exit(t_info *shell, char *commands, t_hashmap *cpy_env, int end)
- {
+void handle_env_exit(t_info *shell, char *commands, t_hashmap *cpy_env, int end)
+{
     free_hashmap(cpy_env);
     manage_exit(shell, commands, FILE_NOT_FOUND, end);
- }
+}
 
 void close_file_descriptors(t_info *shell, t_commands *commands)
 {
@@ -70,8 +70,8 @@ char *ft_path(t_info *shell, char *commands)
     full_path = NULL;
     while (path_directories[index])
     {
-        directory = ft_strjoin(path_directories[index], "/");
-        full_path = ft_strjoin(directory, commands);
+        directory = ft_strjoin("/", commands);
+        full_path = ft_strjoin(path_directories[index], directory);
         free(directory);
         if (access(full_path, F_OK) == 0)
             break;
@@ -81,7 +81,7 @@ char *ft_path(t_info *shell, char *commands)
     }
     ft_freetab(&path_directories);
     return (full_path);
-}
+} 
 
 void ft_run_command(t_info *shell, t_commands *commands)
 {

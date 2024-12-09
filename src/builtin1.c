@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:05 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/09 11:16:37 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 11:47:45 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int ft_is_valid_n_flag(char *cmd)
 {
     int i;
 
-    i = 1;
     if (!cmd)
         return (0);
     if (cmd[0] != '-' || cmd[1] != 'n')
         return (0);
+    i = 1;
     while (cmd[i] != '\0')
     {
         if (cmd[i] != 'n')
