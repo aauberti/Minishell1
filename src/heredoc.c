@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:11:04 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 19:11:05 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 18:48:12 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char *ft_heredoc_line(char *str[2], size_t size, char *end_heredoc, char *error)
         str[0] = readline("> ");
         if (!str[0])
         {
-           ft_printf("%s (wanted %s)\n", error, end_heredoc);
+           printf("%s (wanted %s)\n", error, end_heredoc);
            break;
         }
         temp = str[0];
@@ -99,14 +99,14 @@ t_commands *configure_heredoc_input(t_commands *node, char **commands[2], int *i
 
     end_heredoc = NULL;
     (*i)++;
-    if (commands[0][++(*i)] && commands[1][*i][0] != '<' && commands[1][*i][0] != '>'
-        && commands[1][*i][0] != '|')
+    if (commands[0][++(*i)] && (commands[1][*i][0] != '<' && commands[1][*i][0] != '>'
+        && commands[1][*i][0] != '|'))
     {
-        end_heredoc = (commands[0][*i]);
+        end_heredoc = commands[0][*i];
         node->fd1 = ft_heredoc_fd(end_heredoc, shell);
     }
-    if (!commands[0][*i] || node->fd1 == -1 || commands[1][*i][0] == '<' || commands[1][*i][0] == '>'
-        || commands[1][*i][0] == '|')
+    if (!commands[0][*i] || node->fd1 == -1 || (commands[1][*i][0] == '<' || commands[1][*i][0] == '>'
+        || commands[1][*i][0] == '|'))
     {
         ft_heredoc_error(commands[1], i, shell, node);
         *i = -1;

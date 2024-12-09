@@ -153,7 +153,7 @@ int   count_in_word(char *str, char *sep, int nb);
 char    **ft_create_in_word(char **word, char *str, char *sep, int index[3]);
 char    **ft_split_in_word(const char *str, char *sep);
 char    **insert_in_word(char ***word, char **new_word, int index);
-int     count_word(char *str, char *sep, int nb[2]);
+int     count_word(const char *str, char *sep, int nb[2]);
 char    **create_word(char **word, char *str, char *sep, int index[3]);
 char    **ft_split_str(char *str, char *sep);
 char    **ft_tabcpy(char **tokenize);

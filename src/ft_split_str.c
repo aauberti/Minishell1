@@ -6,13 +6,13 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:22 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:31:40 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 18:16:04 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int     count_word(char *str, char *sep, int nb[2])
+int     count_word(const char *str, char *sep, int nb[2])
 {
     int     quote_state[2];
 

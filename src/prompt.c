@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:27:03 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 18:50:27 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 18:30:38 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char    *prompt(t_info *shell)
         printf("exit\n");
         return (NULL);
     }
-    if (!str[0])
+    if (str[0] != '\0')
     {
         save_cmds_in_history(shell, str);
         add_history(str);
