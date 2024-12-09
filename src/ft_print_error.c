@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 10:32:44 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/07 18:46:47 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 09:35:29 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void ft_print_error2(int error)
 {
     if (error == COMMAND_NOT_FOUND)
-        ft_putstr_fd("command not found", 2);
+        ft_putstr_fd(" command not found", 2);
     else if (error == IS_A_DIRECTORY)
-        ft_putstr_fd("is a directory", 2);
+        ft_putstr_fd(" is a directory", 2);
     else if (error == HISTORY_BAD_ARG)
-        ft_putstr_fd("numeric argument required", 2);
+        ft_putstr_fd(" numeric argument required", 2);
     else if (error == HISTORY_BAD_ARGS)
-        ft_putstr_fd("too many arguments", 2);
+        ft_putstr_fd(" too many arguments", 2);
     else if (error == FILE_NOT_FOUND || error == CD_ERROR)
-        ft_putstr_fd("no such file or directory", 2);
+        ft_putstr_fd(" no such file or directory", 2);
     else if (error == NOT_A_DIRECTORY)
-        ft_putstr_fd("not a directory", 2);
+        ft_putstr_fd(" not a directory", 2);
 }
 
 void ft_print_error(char *argument, int error)

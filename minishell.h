@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:25:41 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 15:12:37 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 23:30:10 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,5 @@ char    *start_prompt(t_info *shell);
 char    *prompt(t_info *shell);
 int process_unset_command(t_info *shell, t_commands command, int *status);
 void unset_shell(t_info *shell, t_commands command, int end);
-void ft_print_tab(char **tab);
 
 #endif

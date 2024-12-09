@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:49 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 14:38:21 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 11:24:03 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char **insert_token(char **commands, char *token, int index)
         ft_freetab(&new_commands);
         return (commands);
     }
-    new_commands[++index] = NULL;
+    new_commands[index + 1] = NULL;
     ft_freetab(&commands);
     return (new_commands);
 }

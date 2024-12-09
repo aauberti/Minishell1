@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:53:10 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/08 20:17:04 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void ft_execute_commands(t_info *shell)
     int cmd_count;
     int pipe_fd[2];
     t_commands *current_cmds;
-
+    
     cmd_count = 0;
     if (!shell->commands)
         return ;

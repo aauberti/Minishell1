@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:26:27 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 15:45:45 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 09:29:55 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ char    *ft_cut_token(char *token)
         return (NULL);
     while (token[++index[0]])
     {
-        state[0] = (state[0] + (!state[1] && token[index[0]] == '\'')) % 2;
-        state[1] = (state[1] + (!state[0] && token[index[0]] == '\"')) % 2;
-        if ((state[1] || token[index[0]] == '\'') && (state[0] || token[index[0]] == '\"') && ++index[1] >= 0)
+        state[0] = (state[0] + (!state[1] && token[index[0]] == '\''));
+        state[1] = (state[1] + (!state[0] && token[index[0]] == '\"'));
+        if ((state[1] || token[index[0]] != '\'') && (state[0] || token[index[0]] != '\"') && ++index[1] >= 0)
             new_token[index[1]] = token[index[0]];
     }
     new_token[++index[1]] = '\0';

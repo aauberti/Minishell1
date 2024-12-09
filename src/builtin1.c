@@ -6,7 +6,7 @@
 /*   By: aaubertin <aaubertin@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:10:05 by aaubertin         #+#    #+#             */
-/*   Updated: 2024/12/08 12:43:44 by aaubertin        ###   ########.fr       */
+/*   Updated: 2024/12/09 11:16:37 by aaubertin        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ void	echo_shell(t_info *shell, t_commands commands, int end)
     j = 0;
     while (commands.command[1] != NULL)
     {
-        if (ft_is_valid_n_flag(commands.command[i]) == 0 
-            || j == 1)
+        if (ft_is_valid_n_flag(commands.command[i]) == 0 || j == 1)
         {
             j = 1;
             ft_putstr_fd(commands.command[i], commands.fd2);
             if (commands.command[i + 1] != NULL)
-                ft_putstr_fd(" ", commands.fd1);
+                ft_putstr_fd(" ", commands.fd2);
         }
         i++;
     }
